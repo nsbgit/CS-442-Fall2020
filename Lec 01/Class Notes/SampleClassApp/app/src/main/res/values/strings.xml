@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SampleClassApp</string>
+    <string name="if_you_see_this">If you see this - the App and Android Studio is working!</string>
+</resources>
