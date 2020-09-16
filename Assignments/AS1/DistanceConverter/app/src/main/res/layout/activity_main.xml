@@ -150,7 +150,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorTextViewBackground"
         android:inputType="none"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -164,7 +164,8 @@
     <Button
         android:id="@+id/bClear"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="bClear_Clicked"
@@ -174,7 +175,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvConversionHistory" />
+        app:layout_constraintTop_toBottomOf="@+id/tvConversionHistory"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
