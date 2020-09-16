@@ -2,8 +2,10 @@
     <string name="app_name">Converter</string>
     <string name="conversion">Conversion:</string>
     <string name="miles_to_kilometers">Miles to Kilometers</string>
+    <string name="miles_to_kilometers_short">Mi to Km: </string>
     <string name="kilometers_value">Kilometers Value:</string>
-    <string name="kilimeters_to_miles">Kilimeters to Miles</string>
+    <string name="kilometers_to_miles">Kilometers to Miles</string>
+    <string name="kilometers_to_miles_short">Km to Mi: </string>
     <string name="miles_value">Miles Value:</string>
     <string name="convert">CONVERT</string>
     <string name="clear">CLEAR</string>

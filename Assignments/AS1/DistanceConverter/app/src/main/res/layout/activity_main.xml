@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="rgMiKm_Clicked"
-            android:text="@string/kilimeters_to_miles"
+            android:text="@string/kilometers_to_miles"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="157dp"
             tools:layout_editor_absoluteY="92dp" />
@@ -115,6 +115,7 @@
         android:inputType="numberSigned|textPersonName"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/rgMiKm"
@@ -141,7 +142,7 @@
         android:background="@color/colorTextViewBackground"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:textSize="18sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="@+id/etInputValue"
         app:layout_constraintStart_toStartOf="@+id/etInputValue"
         app:layout_constraintTop_toBottomOf="@+id/bConvert" />
