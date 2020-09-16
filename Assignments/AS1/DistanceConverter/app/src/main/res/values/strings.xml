@@ -5,7 +5,6 @@
     <string name="kilometers_value">Kilometers Value:</string>
     <string name="kilimeters_to_miles">Kilimeters to Miles</string>
     <string name="miles_value">Miles Value:</string>
-    <string name="textview">TextView</string>
     <string name="convert">CONVERT</string>
     <string name="clear">CLEAR</string>
     <string name="conversion_history">Conversion History:</string>
