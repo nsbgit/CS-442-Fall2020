@@ -35,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void rgMiKm_Clicked(View v) {
+        switch (v.getId()) {
+            case R.id.rbMiToKm:
+                typeOfConversion = TYPE_OF_CONVERSION.MILES_TO_KILOMETERS;
+                break;
+            case R.id.rbKmToMi:
+                typeOfConversion = TYPE_OF_CONVERSION.KILOMETERS_TO_MILES;
+                break;
+        }
+    }
+
     public void bConvert_Clicked(View v) {}
 
     public void bClear_Clicked(View v) {}
@@ -66,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public float calculate(float input, @org.jetbrains.annotations.NotNull TYPE_OF_CONVERSION typeOfConversion) {
+    public float calculate(float input) {
         float conversionFactorMilesToKilometers = 1.60934f;
         float conversionFactorKilometersToMiles = 0.621371f;
         float result = 0.0f;

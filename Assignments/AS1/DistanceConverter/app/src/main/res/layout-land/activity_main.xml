@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:onClick="rgMiKm_Clicked"
             android:text="@string/miles_to_kilometers"
             android:textColorHighlight="@color/colorRadioButton"
             android:textColorLink="@color/colorRadioButton"
@@ -57,6 +58,7 @@
             android:id="@+id/rbKmToMi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="rgMiKm_Clicked"
             android:text="@string/kilimeters_to_miles"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="157dp"
@@ -109,12 +111,12 @@
         android:layout_marginEnd="8dp"
         android:background="@color/colorTextViewBackground"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="numberSigned|textPersonName"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        android:importantForAutofill="no"
         tools:ignore="LabelFor" />
 
     <Button
