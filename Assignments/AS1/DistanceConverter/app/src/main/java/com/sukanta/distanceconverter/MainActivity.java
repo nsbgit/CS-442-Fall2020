@@ -25,7 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
     private TYPE_OF_CONVERSION typeOfConversion = TYPE_OF_CONVERSION.MILES_TO_KILOMETERS;
     private String converstionTypeString = "Mi to Km: ";
-    private String TAG = "MainActivity";
+    private final String TAG = "MainActivity";
+    private final String KEY_HISTORY = "HISTORY";
+    private final String KEY_OUTPUT = "OUTPUT";
+    private final String KEY_TYPE = "TYPE";
+    private String conversationHistory = new String();
+    //private String[] = new String[]();
 
     // reference of screen elements
     private RadioGroup rgMiKm;
@@ -41,9 +46,32 @@ public class MainActivity extends AppCompatActivity {
         createReferenceForScreenElements();
     }
 
+    private void restoreSavedState(Bundle savedInstanceState) {
+        try {
+            conversationHistory = savedInstanceState.getString(KEY_HISTORY);
+            tvConversionHistory.setText(conversationHistory);
+
+            String outputValue = savedInstanceState.getString(KEY_OUTPUT);
+            tvOutputValue.setText(outputValue);
+
+            typeOfConversion = (TYPE_OF_CONVERSION)savedInstanceState.get(KEY_TYPE);
+            updateScreenElments();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(),
+                    "Something went wrong.",
+                    Toast.LENGTH_SHORT).show();
+            etInputValue.setText("");
+            Log.e(TAG, "restoreSavedState: ", e);
+        }
+    }
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         // Code here
+        outState.putString(KEY_HISTORY, conversationHistory);
+        outState.putString(KEY_OUTPUT, tvOutputValue.getText().toString());
+        outState.putSerializable(KEY_TYPE, typeOfConversion);
 
         // Call super last
         super.onSaveInstanceState(outState);
@@ -55,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         // Code here
+        if (savedInstanceState != null)
+            restoreSavedState(savedInstanceState);
     }
 
     public void rgMiKm_Clicked(View v) {
@@ -62,15 +92,9 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.rbMiToKm:
                     typeOfConversion = TYPE_OF_CONVERSION.MILES_TO_KILOMETERS;
-                    tvInputLable.setText(R.string.miles_value);
-                    tvOutputLable.setText(R.string.kilometers_value);
-                    converstionTypeString = "Mi to Km: ";
                     break;
                 case R.id.rbKmToMi:
                     typeOfConversion = TYPE_OF_CONVERSION.KILOMETERS_TO_MILES;
-                    tvInputLable.setText(R.string.kilometers_value);
-                    tvOutputLable.setText(R.string.miles_value);
-                    converstionTypeString = "Km to Mi: ";
                     break;
             }
         } catch (Exception e) {
@@ -80,6 +104,24 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             etInputValue.setText("");
             Log.e(TAG, "rgMiKm_Clicked: ", e);
+        }
+        finally {
+            updateScreenElments();
+        }
+    }
+
+    private void updateScreenElments() {
+        switch (typeOfConversion) {
+            case MILES_TO_KILOMETERS:
+                tvInputLable.setText(R.string.miles_value);
+                tvOutputLable.setText(R.string.kilometers_value);
+                converstionTypeString = "Mi to Km: ";
+                break;
+            case KILOMETERS_TO_MILES:
+                tvInputLable.setText(R.string.kilometers_value);
+                tvOutputLable.setText(R.string.miles_value);
+                converstionTypeString = "Km to Mi: ";
+                break;
         }
     }
 
@@ -102,9 +144,10 @@ public class MainActivity extends AppCompatActivity {
             char leftArrow = '\u2794';
             DecimalFormat numberFormat = new DecimalFormat(pattern);
             String resultString = numberFormat.format(resultValue);
-            String historyString = converstionTypeString + resultString + " " + leftArrow + " " + resultString;
+            String historyString = converstionTypeString + inputString + " " + leftArrow + " " + resultString;
             addToHistory(historyString);
             tvOutputValue.setText(resultString);
+            tvConversionHistory.setText(conversationHistory);
         } catch (NumberFormatException e) {
             //e.printStackTrace();
             Toast.makeText(getApplicationContext(),
@@ -123,9 +166,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addToHistory(String historyString) {
+        conversationHistory = String.format("%s\n%s", historyString, conversationHistory);
     }
 
-    public void bClear_Clicked(View v) {}
+    public void bClear_Clicked(View v) {
+        conversationHistory = "";
+        tvConversionHistory.setText(conversationHistory);
+    }
 
     private void createReferenceForScreenElements() {
         try {
