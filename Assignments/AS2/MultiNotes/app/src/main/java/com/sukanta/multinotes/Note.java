@@ -4,11 +4,12 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Note {
+public class Note implements Serializable {
     private String title;
     private String text;
     private Date lastUpdatedTime;

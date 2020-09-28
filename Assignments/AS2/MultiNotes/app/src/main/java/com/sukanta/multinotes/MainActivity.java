@@ -1,10 +1,13 @@
 package com.sukanta.multinotes;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener, View.OnLongClickListener {
+    private static final int NOTE_REQUEST = 1000;
     private final List<Note> noteList = new ArrayList<>();
     private RecyclerView recyclerView;
 
@@ -88,5 +92,29 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed() {
         Toast.makeText(this, "The back button was pressed - Bye!", Toast.LENGTH_SHORT).show();
         super.onBackPressed();
+    }
+
+    public void goToEditActivity() {
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("NOTE", "");
+        startActivityForResult(intent, NOTE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+/*
+        if (requestCode == NOTE_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null && data.hasExtra("NOTE")) {
+                    String status = data.getStringExtra("NOTE");
+                    nameText.setVisibility(View.INVISIBLE);
+                    responseText.setText(String.format("Hello %s!%n%nI'm glad you are %s.", name, status));
+                    findViewById(R.id.button3).setVisibility(View.INVISIBLE);
+                    greetText.setText(R.string.i_know_you);
+                }
+            }
+        }
+ */
     }
 }
