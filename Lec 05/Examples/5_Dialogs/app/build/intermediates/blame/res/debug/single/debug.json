@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog.xml.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\layout\\dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon3.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\drawable\\icon3.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon2.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\drawable\\icon2.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon1.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\drawable\\icon1.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon4.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\5_Dialogs\\app\\src\\main\\res\\drawable\\icon4.png"
+    }
+]
