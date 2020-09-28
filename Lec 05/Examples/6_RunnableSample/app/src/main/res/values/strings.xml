@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RunnableSample</string>
+    <string name="process">Process</string>
+    <string name="enter_text_for_analysis_here">Enter text for analysis here</string>
+</resources>
