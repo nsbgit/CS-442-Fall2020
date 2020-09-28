@@ -1,0 +1,7 @@
+#Tue Sep 29 00:24:36 IST 2020
+base.0=C\:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\0A_RecyclerView_1\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=C\:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\0A_RecyclerView_1\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
