@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorNotesBackground"
     tools:context=".EditActivity">
 
     <EditText
@@ -13,12 +14,14 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
+        android:autofillHints="Enter Title"
+        android:background="@color/colorNotesRow"
         android:ems="10"
         android:inputType="text"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="Enter Title"
         tools:ignore="LabelFor" />
 
     <EditText
@@ -27,13 +30,16 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints="Enter Text"
+        android:background="@color/colorNotesRow"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etTitle"
         app:layout_constraintStart_toStartOf="@+id/etTitle"
         app:layout_constraintTop_toBottomOf="@+id/etTitle"
-        android:autofillHints="Enter Text"
         tools:ignore="LabelFor" />
 </androidx.constraintlayout.widget.ConstraintLayout>

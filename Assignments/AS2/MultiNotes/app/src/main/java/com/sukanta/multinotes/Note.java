@@ -66,4 +66,10 @@ public class Note implements Serializable {
     public String toString() {
         return "Last Updated on: " + this.lastUpdatedTime + "\nTitle: " + this.title + "\nText: " + this.text;
     }
+
+    public void save(String title, String text) {
+        this.title = title;
+        this.text = text;
+        this.lastUpdatedTime = new Date();
+    }
 }

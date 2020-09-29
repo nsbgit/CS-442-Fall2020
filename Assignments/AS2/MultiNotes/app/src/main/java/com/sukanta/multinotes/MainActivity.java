@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,12 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener, View.OnLongClickListener {
     private static final int NOTE_REQUEST = 1000;
+    private static final String NOTE_KEY = "NOTE";
+    private static final String POSITION_KEY = "POSITION";
+    private static final String TAG = "MainActivity";
     private final List<Note> noteList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private NotesAdapter notesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +40,12 @@ public class MainActivity extends AppCompatActivity
     private void InitializeScreenItems() {
         recyclerView = findViewById(R.id.rvRecycler);
         // Data to recyclerview adapter
-        NotesAdapter notesAdapter = new NotesAdapter(noteList, this);
+        notesAdapter = new NotesAdapter(noteList, this);
         recyclerView.setAdapter(notesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Make some data - not always needed - just used to fill list
-        CreateDummyData();
+        //CreateDummyData();
 
         getSupportActionBar().setTitle(getString(R.string.app_name) + " (" + noteList.size() + ")");
     }
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity
                 goToAboutActivity();
                 return true;
             case R.id.mAdd:
-                Toast.makeText(this, "Add Clicked", Toast.LENGTH_LONG).show();
+                goToEditActivity(-1); // New Entry
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -77,8 +80,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View view) {
         int position = recyclerView.getChildLayoutPosition(view);
-        Note note = noteList.get(position);
-        Toast.makeText(view.getContext(), "SHORT " + note.toString(), Toast.LENGTH_SHORT).show();
+        goToEditActivity(position);
     }
 
     @Override
@@ -101,27 +103,49 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void goToEditActivity() {
+    public void goToEditActivity(int position) {
+        Note note;
+        if (position < 0) {
+            // New Entry
+            note = new Note();
+        }
+        else {
+            note = noteList.get(position);
+        }
+
         Intent intent = new Intent(this, EditActivity.class);
-        intent.putExtra("NOTE", "");
+        intent.putExtra(NOTE_KEY, note);
+        intent.putExtra(POSITION_KEY, position);
         startActivityForResult(intent, NOTE_REQUEST);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-/*
+
+        Note note;
+        int position;
         if (requestCode == NOTE_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
-                if (data != null && data.hasExtra("NOTE")) {
-                    String status = data.getStringExtra("NOTE");
-                    nameText.setVisibility(View.INVISIBLE);
-                    responseText.setText(String.format("Hello %s!%n%nI'm glad you are %s.", name, status));
-                    findViewById(R.id.button3).setVisibility(View.INVISIBLE);
-                    greetText.setText(R.string.i_know_you);
+                if (data != null) {
+                    if (data.hasExtra(NOTE_KEY)) {
+                        note = (Note) data.getSerializableExtra(NOTE_KEY);
+
+                        if (note != null) {
+                            if (data.hasExtra(POSITION_KEY)) {
+                                position = data.getIntExtra(POSITION_KEY, -2);
+
+                                if(position < 0)
+                                    noteList.add(0, note);
+                                else
+                                    noteList.set(position, note);
+
+                                notesAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
                 }
             }
         }
- */
     }
 }
