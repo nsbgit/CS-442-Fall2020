@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mInfo:
-                Toast.makeText(this, "Info Clicked", Toast.LENGTH_LONG).show();
+                goToAboutActivity();
                 return true;
             case R.id.mAdd:
                 Toast.makeText(this, "Add Clicked", Toast.LENGTH_LONG).show();
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     @Override
     public void onClick(View view) {
@@ -92,6 +93,12 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed() {
         Toast.makeText(this, "The back button was pressed - Bye!", Toast.LENGTH_SHORT).show();
         super.onBackPressed();
+    }
+
+    private void goToAboutActivity() {
+        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        //intent.putExtra(Intent.EXTRA_TEXT, MainActivity.class.getSimpleName());
+        startActivity(intent);
     }
 
     public void goToEditActivity() {
