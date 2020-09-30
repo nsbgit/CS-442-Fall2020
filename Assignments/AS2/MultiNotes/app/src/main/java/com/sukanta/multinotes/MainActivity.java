@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         loadFile();
 
-        InitializeScreenItems();
+        initializeScreenItems();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
     }
 
-    private void InitializeScreenItems() {
+    private void initializeScreenItems() {
         try {
             Log.d(TAG, "InitializeScreenItems: ");
             recyclerView = findViewById(R.id.rvRecycler);
@@ -74,23 +74,18 @@ public class MainActivity extends AppCompatActivity
             //Make some data - not always needed - just used to fill list
             //CreateDummyData();
 
-            int notesCount = 0;
-            if (noteList != null)
-                notesCount = noteList.size();
-
-            Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.app_name) + " (" + notesCount + ")");
+            updateNotesCount();
         } catch (Exception e) {
             Log.e(TAG, "InitializeScreenItems: ", e);
         }
     }
 
-    private void CreateDummyData() {
-        Log.d(TAG, "CreateDummyData: ");
-        noteList.clear();
-        for (int i = 0; i < 5; i++) {
-            noteList.add(new Note("Title " + i, "Here is the text " + i));
-        }
-        saveNoteListToJson();
+    private void updateNotesCount() {
+        int notesCount = 0;
+        if (noteList != null)
+            notesCount = noteList.size();
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.app_name) + " (" + notesCount + ")");
     }
 
     @Override
@@ -193,6 +188,7 @@ public class MainActivity extends AppCompatActivity
 
                                     sort();
                                     notesAdapter.notifyDataSetChanged();
+                                    updateNotesCount();
                                     saveNoteListToJson();
                                 }
                             }
@@ -256,6 +252,7 @@ public class MainActivity extends AppCompatActivity
                     noteList.remove(pos);
                     sort();
                     notesAdapter.notifyDataSetChanged();
+                    updateNotesCount();
                     saveNoteListToJson();
                 }
             });
