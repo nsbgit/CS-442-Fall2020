@@ -1,9 +1,5 @@
 package com.sukanta.multinotes;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,9 +8,12 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditActivity extends AppCompatActivity {
     private EditText etTitle;
@@ -87,13 +86,11 @@ public class EditActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Log.d(TAG, "onOptionsItemSelected: ");
-        switch (item.getItemId()) {
-            case R.id.mSave:
-                saveNote();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.mSave) {
+            saveNote();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void saveNote() {
