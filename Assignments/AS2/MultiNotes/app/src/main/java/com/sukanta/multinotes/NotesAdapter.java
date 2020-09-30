@@ -36,7 +36,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
         try {
             Note note = noteList.get(position);
 
-            holder.tvTitle.setText(note.getTitle());
+            holder.tvTitle.setText(note.getTitle80Char());
             holder.tvLastUpdatedTime.setText(note.getLastUpdatedTimeFormatted());
             holder.tvText.setText(note.getText80Char());
         } catch (Exception e) {

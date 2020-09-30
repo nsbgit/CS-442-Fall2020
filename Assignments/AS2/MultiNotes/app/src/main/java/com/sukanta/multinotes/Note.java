@@ -29,6 +29,14 @@ public class Note implements Serializable {
         return title;
     }
 
+    public String getTitle80Char() {
+        if (this.title.length() > 80) {
+            return String.format("%."+ 80 +"s...", this.title);
+        } else {
+            return this.title;
+        }
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
