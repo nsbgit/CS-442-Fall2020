@@ -5,10 +5,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class Note implements Serializable {
