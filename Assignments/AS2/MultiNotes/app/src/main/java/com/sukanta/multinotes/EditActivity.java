@@ -39,8 +39,10 @@ public class EditActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d(TAG, "onBackPressed: ");
-        if (isChanged())
+        if (isChanged()) {
             showAlertDialog();
+            return;
+        }
         super.onBackPressed();
     }
 
@@ -145,44 +147,21 @@ public class EditActivity extends AppCompatActivity {
 
             //builder.setIcon(R.drawable.icon1);
             builder.setTitle(s)
-                    .setMessage("My message")
-                    .setNegativeButton("NO1", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Log.d(TAG, "onClick: NO1");
-                            //dialogInterface.dismiss();
+                            Log.d(TAG, "onClick: NO");
+                            dialogInterface.dismiss();
                         }
                     })
-                    .setPositiveButton("YES1", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Log.d(TAG, "onClick: YES1");
-                            //dialogInterface.dismiss();
+                            Log.d(TAG, "onClick: YES");
+                            saveNote();
+                            dialogInterface.dismiss();
                         }
                     }).show();
-
-                /*
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Log.d(TAG, "onClick YES: id: " + id);
-                saveNote();
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Log.d(TAG, "onClick NO: id: " + id);
-            }
-        });
-
-        //builder.setMessage("Delete Note '" + note.getTitle() + "'?");
-        String s = "Your note is not saved!\n" +
-                "Save note ‘" + etTitle.getText() + "’?";
-        builder.setTitle("Do you want to save?");
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-                 */
         } catch (Exception e) {
             Log.e(TAG, "showAlertDialog: ", e);
         }
