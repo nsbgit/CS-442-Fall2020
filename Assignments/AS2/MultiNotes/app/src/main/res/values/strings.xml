@@ -9,4 +9,5 @@
     <string name="no_file">No JSON Product File Present</string>
     <string name="encoding">UTF-8</string>
     <string name="saved">Note Saved!</string>
+    <string name="copyright">© 2020, Sukanta Sharma</string>
 </resources>
