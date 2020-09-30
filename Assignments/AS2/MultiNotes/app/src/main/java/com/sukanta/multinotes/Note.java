@@ -1,13 +1,12 @@
 package com.sukanta.multinotes;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Note implements Serializable {
     private String title;
@@ -40,8 +39,7 @@ public class Note implements Serializable {
 
     public String getText80Char() {
         if (this.text.length() > 80) {
-            String trimmedText = String.format("%."+ 80 +"s...", this.text);
-            return trimmedText;
+            return String.format("%."+ 80 +"s...", this.text);
         } else {
             return this.text;
         }
@@ -55,10 +53,13 @@ public class Note implements Serializable {
         return lastUpdatedTime;
     }
 
+    public void setLastUpdatedTime(Date lastUpdatedTime) {
+        this.lastUpdatedTime = lastUpdatedTime;
+    }
+
     public String getLastUpdatedTimeFormatted() {
-        DateFormat dateFormat = new SimpleDateFormat("E MMM dd, hh:mm aa");
-        String formattedDate = dateFormat.format(this.lastUpdatedTime);
-        return  formattedDate;
+        DateFormat dateFormat = new SimpleDateFormat("E MMM dd, hh:mm aa", Locale.US);
+        return dateFormat.format(this.lastUpdatedTime);
     }
 
     @NonNull
