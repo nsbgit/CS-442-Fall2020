@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TextView-EditText-Button</string>
+    <string name="button_text">Button</string>
+    <string name="edittext">EditText for Data Entry</string>
+    <string name="button_label">Button</string>
+    <string name="textview_label">TextView for Text Display (reversed)</string>
+    <string name="enter_a_value"><![CDATA[<Enter a value>]]></string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/do_a"
+        android:id="@+id/menuA"
+        android:icon="@android:drawable/ic_menu_edit"
+        app:showAsAction="always" />
+    <item android:title="@string/do_b"
+        android:id="@+id/menuB"
+        android:icon="@android:drawable/ic_menu_gallery"
+        app:showAsAction="always" />
+    <item android:title="@string/do_c"
+        android:id="@+id/menuC"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="ifRoom" />
+    <item android:title="@string/item_d"
+        android:id="@+id/menuD" />
+    <item android:title="@string/item_e"
+        android:id="@+id/menuE" />
+
+</menu>

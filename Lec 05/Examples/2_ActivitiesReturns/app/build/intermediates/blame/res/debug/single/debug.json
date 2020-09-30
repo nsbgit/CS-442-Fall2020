@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\layout_a_activity.xml.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\layout\\a_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\build\\intermediates\\res\\merged\\debug\\layout_b_activity.xml.flat",
+        "source": "C:\\Users\\Sukanta_Sharma\\Documents\\GitHub\\CS-442-Fall2020\\Lec 05\\Examples\\2_ActivitiesReturns\\app\\src\\main\\res\\layout\\b_activity.xml"
+    }
+]

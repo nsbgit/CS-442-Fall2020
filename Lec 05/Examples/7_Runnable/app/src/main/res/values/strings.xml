@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Runnable Example</string>
+    <string name="a_running">Runnable Running</string>
+    <string name="a_stopped">Runnable Stopped</string>
+    <string name="enter_seconds_to_delay">Enter Seconds to Delay:</string>
+    <string name="do_threaded_work">Do Runnable Work</string>
+    <string name="click_me">Click Me!</string>
+    <string name="click_the_button_below">Click the button below to show action being performed while the Runnable is executing</string>
+    <string name="running_false">Runnable is Running: false</string>
+</resources>
