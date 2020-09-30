@@ -40,7 +40,7 @@ public class EditActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d(TAG, "onBackPressed: ");
-        //if (isChanged())
+        if (isChanged())
             showAlertDialog();
         super.onBackPressed();
     }
@@ -97,23 +97,27 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void saveNote() {
-        Log.d(TAG, "saveNote: ");
-        if (isChanged()) {
-            if (etTitle.getText().toString().equals("")) {
-                Log.d(TAG, "saveNote: Not saved as title is blank");
-                Toast.makeText(this, "Un-titled activity was not saved", Toast.LENGTH_LONG).show();
-                exitWithoutSaving();
-                return;
+        try {
+            Log.d(TAG, "saveNote: ");
+            if (isChanged()) {
+                if (etTitle.getText().toString().equals("")) {
+                    Log.d(TAG, "saveNote: Not saved as title is blank");
+                    Toast.makeText(this, "Un-titled activity was not saved", Toast.LENGTH_LONG).show();
+                    exitWithoutSaving();
+                    return;
+                }
+                note.save(etTitle.getText().toString(), etText.getText().toString());
             }
-            note.save(etTitle.getText().toString(), etText.getText().toString());
-        }
 
-        Intent intent = new Intent();
-        intent.putExtra(NOTE_KEY, note);
-        intent.putExtra(POSITION_KEY, pos);
-        setResult(Activity.RESULT_OK, intent);
-        Log.d(TAG, "saveNote: finish() called after save");
-        finish();
+            Intent intent = new Intent();
+            intent.putExtra(NOTE_KEY, note);
+            intent.putExtra(POSITION_KEY, pos);
+            setResult(Activity.RESULT_OK, intent);
+            Log.d(TAG, "saveNote: finish() called after save");
+            finish();
+        } catch (Exception e) {
+            Log.e(TAG, "saveNote: ", e);
+        }
     }
 
     private void exitWithoutSaving() {
@@ -134,30 +138,31 @@ public class EditActivity extends AppCompatActivity {
     }
 
     public void showAlertDialog() {
-        Log.d(TAG, "showAlertDialog: ");
-        // Simple Ok & Cancel dialog - no view used.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        try {
+            Log.d(TAG, "showAlertDialog: ");
+            // Simple Ok & Cancel dialog - no view used.
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        String s = "Your note is not saved!\n" +
-                "Save note ‘" + etTitle.getText() + "’?";
+            String s = "Your note is not saved!\n" +
+                    "Save note ‘" + etTitle.getText() + "’?";
 
-        //builder.setIcon(R.drawable.icon1);
-        builder.setTitle(s)
-                .setMessage("My message")
-                .setNegativeButton("NO1", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d(TAG, "onClick: NO1");
-                        //dialogInterface.dismiss();
-                    }
-                })
-                .setPositiveButton("YES1", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.d(TAG, "onClick: YES1");
-                        //dialogInterface.dismiss();
-                    }
-                }).show();
+            //builder.setIcon(R.drawable.icon1);
+            builder.setTitle(s)
+                    .setMessage("My message")
+                    .setNegativeButton("NO1", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Log.d(TAG, "onClick: NO1");
+                            //dialogInterface.dismiss();
+                        }
+                    })
+                    .setPositiveButton("YES1", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Log.d(TAG, "onClick: YES1");
+                            //dialogInterface.dismiss();
+                        }
+                    }).show();
 
                 /*
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -181,5 +186,8 @@ public class EditActivity extends AppCompatActivity {
         dialog.show();
 
                  */
+        } catch (Exception e) {
+            Log.e(TAG, "showAlertDialog: ", e);
+        }
     }
 }
