@@ -5,4 +5,8 @@
     <string name="save">Save</string>
     <string name="multi_notes">Multi Notes</string>
     <string name="version_1_0">Version 1.0</string>
+    <string name="file_name">Note.json</string>
+    <string name="no_file">No JSON Product File Present</string>
+    <string name="encoding">UTF-8</string>
+    <string name="saved">Note Saved!</string>
 </resources>
