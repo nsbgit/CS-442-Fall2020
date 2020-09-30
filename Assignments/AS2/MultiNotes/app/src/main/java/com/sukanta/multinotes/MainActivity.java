@@ -64,19 +64,25 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void InitializeScreenItems() {
-        Log.d(TAG, "InitializeScreenItems: ");
-        recyclerView = findViewById(R.id.rvRecycler);
-        // Data to recyclerview adapter
-        notesAdapter = new NotesAdapter(noteList, this);
-        recyclerView.setAdapter(notesAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        try {
+            Log.d(TAG, "InitializeScreenItems: ");
+            recyclerView = findViewById(R.id.rvRecycler);
+            // Data to recyclerview adapter
+            notesAdapter = new NotesAdapter(noteList, this);
+            recyclerView.setAdapter(notesAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //Make some data - not always needed - just used to fill list
-        //CreateDummyData();
+            //Make some data - not always needed - just used to fill list
+            //CreateDummyData();
 
+            int notesCount = 0;
+            if (noteList != null)
+                notesCount = noteList.size();
 
-
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.app_name) + " (" + (noteList != null ? noteList.size() : 0) + ")");
+            Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.app_name) + " (" + notesCount + ")");
+        } catch (Exception e) {
+            Log.e(TAG, "InitializeScreenItems: ", e);
+        }
     }
 
     private void CreateDummyData() {
@@ -97,100 +103,111 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Log.d(TAG, "onOptionsItemSelected: ");
-        switch (item.getItemId()) {
-            case R.id.mInfo:
-                goToAboutActivity();
-                return true;
-            case R.id.mAdd:
-                goToEditActivity(-1); // New Entry
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        try {
+            Log.d(TAG, "onOptionsItemSelected: ");
+            switch (item.getItemId()) {
+                case R.id.mInfo:
+                    goToAboutActivity();
+                    return true;
+                case R.id.mAdd:
+                    goToEditActivity(-1); // New Entry
+                    return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "onOptionsItemSelected: ", e);
+            return super.onOptionsItemSelected(item);
         }
     }
 
-
     @Override
     public void onClick(View view) {
-        Log.d(TAG, "onClick: ");
-        int position = recyclerView.getChildLayoutPosition(view);
-        goToEditActivity(position);
+        try {
+            Log.d(TAG, "onClick: ");
+            int position = recyclerView.getChildLayoutPosition(view);
+            goToEditActivity(position);
+        } catch (Exception e) {
+            Log.e(TAG, "onClick: ", e);
+        }
     }
 
     @Override
     public boolean onLongClick(View view) {
-        Log.d(TAG, "onLongClick: ");
-        /*
-        int position = recyclerView.getChildLayoutPosition(view);
-        Note note = noteList.get(position);
-        Toast.makeText(view.getContext(), "LONG " + note.toString(), Toast.LENGTH_SHORT).show();
-         */
-        showAlertDialog(view);
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        Log.d(TAG, "onBackPressed: ");
-        Toast.makeText(this, "The back button was pressed - Bye!", Toast.LENGTH_SHORT).show();
-        super.onBackPressed();
+        try {
+            Log.d(TAG, "onLongClick: ");
+            showAlertDialog(view);
+        } catch (Exception e) {
+            Log.e(TAG, "onLongClick: ", e);
+        } finally {
+            return true;
+        }
     }
 
     private void goToAboutActivity() {
-        Log.d(TAG, "goToAboutActivity: ");
-        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-        //intent.putExtra(Intent.EXTRA_TEXT, MainActivity.class.getSimpleName());
-        startActivity(intent);
+        try {
+            Log.d(TAG, "goToAboutActivity: ");
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "goToAboutActivity: ", e);
+        }
     }
 
     public void goToEditActivity(int position) {
-        Log.d(TAG, "goToEditActivity: ");
-        Note note;
-        if (position < 0) {
-            // New Entry
-            note = new Note();
-        }
-        else {
-            note = noteList.get(position);
-        }
+        try {
+            Log.d(TAG, "goToEditActivity: ");
+            Note note;
+            if (position < 0) {
+                note = new Note();
+            }
+            else {
+                note = noteList.get(position);
+            }
 
-        Intent intent = new Intent(this, EditActivity.class);
-        intent.putExtra(NOTE_KEY, note);
-        intent.putExtra(POSITION_KEY, position);
-        startActivityForResult(intent, NOTE_REQUEST);
+            Intent intent = new Intent(this, EditActivity.class);
+            intent.putExtra(NOTE_KEY, note);
+            intent.putExtra(POSITION_KEY, position);
+            startActivityForResult(intent, NOTE_REQUEST);
+        } catch (Exception e) {
+            Log.e(TAG, "goToEditActivity: ", e);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Log.d(TAG, "onActivityResult: requestCode: " + requestCode + "\nresultCode: " + resultCode);
-        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            Log.d(TAG, "onActivityResult: requestCode: " + requestCode + "\nresultCode: " + resultCode);
+            super.onActivityResult(requestCode, resultCode, data);
 
-        Note note;
-        int position;
-        if (requestCode == NOTE_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null) {
-                    if (data.hasExtra(NOTE_KEY)) {
-                        note = (Note) data.getSerializableExtra(NOTE_KEY);
+            Note note;
+            int position;
+            if (requestCode == NOTE_REQUEST) {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        if (data.hasExtra(NOTE_KEY)) {
+                            note = (Note) data.getSerializableExtra(NOTE_KEY);
 
-                        if (note != null) {
-                            if (data.hasExtra(POSITION_KEY)) {
-                                position = data.getIntExtra(POSITION_KEY, -2);
+                            if (note != null) {
+                                if (data.hasExtra(POSITION_KEY)) {
+                                    position = data.getIntExtra(POSITION_KEY, -2);
 
-                                if(position < 0)
-                                    noteList.add(0, note);
-                                else
-                                    noteList.set(position, note);
+                                    if(position < 0)
+                                        noteList.add(0, note);
+                                    else
+                                        noteList.set(position, note);
 
-                                sort();
-                                notesAdapter.notifyDataSetChanged();
-                                saveNoteListToJson();
+                                    sort();
+                                    notesAdapter.notifyDataSetChanged();
+                                    saveNoteListToJson();
+                                }
                             }
                         }
                     }
                 }
             }
+        } catch (Exception e) {
+            Log.e(TAG, "onActivityResult: ", e);
         }
     }
 
@@ -203,9 +220,9 @@ public class MainActivity extends AppCompatActivity
             jsonHelper.readJsonStream(fileInputStream, noteList);
             sort();
         } catch (FileNotFoundException e) {
-            Toast.makeText(this, getString(R.string.no_file), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "loadFile: " + getString(R.string.no_file));
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "loadFile: ", e);
         }
     }
 
@@ -217,24 +234,6 @@ public class MainActivity extends AppCompatActivity
 
             JsonHelper jsonHelper = new JsonHelper();
             jsonHelper.writeJsonStream(fileOutputStream, noteList);
-
-            /// You do not need to do the below - it's just
-            /// a way to print out the JSON that is created.
-            ///
-            /*
-            StringWriter sw = new StringWriter();
-            writer = new JsonWriter(sw);
-            writer.setIndent("  ");
-            writer.beginObject();
-            writer.name("name").value(product.getName());
-            writer.name("description").value(product.getDescription());
-            writer.endObject();
-            writer.close();
-            Log.d(TAG, "saveProduct: JSON:\n" + sw.toString());
-
-             */
-            ///
-            ////////////////////////////////////////////////
 
             Log.d(TAG, "saveNoteListToJson: JSON file Updated at " + new Date().toString());
         } catch (Exception e) {
@@ -249,34 +248,37 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void showAlertDialog(View view) {
-        Log.d(TAG, "showAlertDialog: ");
-        // Simple Ok & Cancel dialog - no view used.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final int pos = recyclerView.getChildLayoutPosition(view);
-        Note note = noteList.get(pos);
+        try {
+            Log.d(TAG, "showAlertDialog: ");
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            final int pos = recyclerView.getChildLayoutPosition(view);
+            Note note = noteList.get(pos);
 
-        //builder.setIcon(R.drawable.icon1);
+            //builder.setIcon(R.drawable.icon1);
 
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Log.d(TAG, "onClick YES: id: " + id);
-                noteList.remove(pos);
-                sort();
-                notesAdapter.notifyDataSetChanged();
-                saveNoteListToJson();
-            }
-        });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Log.d(TAG, "onClick NO: id: " + id);
-            }
-        });
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Log.d(TAG, "onClick YES: id: " + id);
+                    noteList.remove(pos);
+                    sort();
+                    notesAdapter.notifyDataSetChanged();
+                    saveNoteListToJson();
+                }
+            });
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Log.d(TAG, "onClick NO: id: " + id);
+                }
+            });
 
-        //builder.setMessage("Delete Note '" + note.getTitle() + "'?");
-        builder.setTitle("Delete Note '" + note.getTitle() + "'?");
+            //builder.setMessage("Delete Note '" + note.getTitle() + "'?");
+            builder.setTitle("Delete Note '" + note.getTitle() + "'?");
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } catch (Exception e) {
+            Log.e(TAG, "showAlertDialog: ", e);
+        }
     }
 }
 
