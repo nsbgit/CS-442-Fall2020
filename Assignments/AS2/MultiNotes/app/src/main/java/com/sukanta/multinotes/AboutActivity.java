@@ -1,11 +1,16 @@
 package com.sukanta.multinotes;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
+
+    private static final String TAG = "AboutActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
