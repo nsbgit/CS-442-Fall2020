@@ -1,5 +1,6 @@
 package com.sukanta.multinotes;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
     private List<Note> noteList;
     private MainActivity mainActivity;
+    private static final String TAG = "NotesAdapter";
 
     NotesAdapter() {}
     NotesAdapter(List<Note> noteList, MainActivity mainActivity) {
@@ -32,15 +34,23 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
-        Note note = noteList.get(position);
+        try {
+            Note note = noteList.get(position);
 
-        holder.tvTitle.setText(note.getTitle());
-        holder.tvLastUpdatedTime.setText(note.getLastUpdatedTimeFormatted());
-        holder.tvText.setText(note.getText80Char());
+            holder.tvTitle.setText(note.getTitle());
+            holder.tvLastUpdatedTime.setText(note.getLastUpdatedTimeFormatted());
+            holder.tvText.setText(note.getText80Char());
+        } catch (Exception e) {
+            Log.e(TAG, "onBindViewHolder: ", e);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return noteList.size();
+        try {
+            return noteList.size();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }
