@@ -139,29 +139,30 @@ public class EditActivity extends AppCompatActivity {
     public void showAlertDialog() {
         try {
             Log.d(TAG, "showAlertDialog: ");
-            // Simple Ok & Cancel dialog - no view used.
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-            String s = "Your note is not saved!\n" +
+            String message = "Your note is not saved!\n" +
                     "Save note ‘" + etTitle.getText() + "’?";
 
             //builder.setIcon(R.drawable.icon1);
-            builder.setTitle(s)
-                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Log.d(TAG, "onClick: NO");
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Log.d(TAG, "onClick: YES");
-                            saveNote();
-                            dialogInterface.dismiss();
-                        }
-                    }).show();
+
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Log.d(TAG, "onClick YES: id: " + id);
+                    saveNote();
+                    dialog.dismiss();
+                }
+            });
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Log.d(TAG, "onClick NO: id: " + id);
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setTitle(message);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         } catch (Exception e) {
             Log.e(TAG, "showAlertDialog: ", e);
         }

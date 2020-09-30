@@ -254,11 +254,13 @@ public class MainActivity extends AppCompatActivity
                     notesAdapter.notifyDataSetChanged();
                     updateNotesCount();
                     saveNoteListToJson();
+                    dialog.dismiss();
                 }
             });
             builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     Log.d(TAG, "onClick NO: id: " + id);
+                    dialog.dismiss();
                 }
             });
 
