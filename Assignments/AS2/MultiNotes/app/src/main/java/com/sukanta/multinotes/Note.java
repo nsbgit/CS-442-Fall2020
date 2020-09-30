@@ -19,12 +19,6 @@ public class Note implements Serializable {
         this.lastUpdatedTime = new Date();
     }
 
-    Note(String title, String text) {
-        this.title = title;
-        this.text = text;
-        this.lastUpdatedTime = new Date();
-    }
-
     public String getTitle() {
         return title;
     }
