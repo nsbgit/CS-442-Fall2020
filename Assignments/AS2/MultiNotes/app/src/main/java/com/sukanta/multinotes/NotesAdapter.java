@@ -15,7 +15,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
     private MainActivity mainActivity;
     private static final String TAG = "NotesAdapter";
 
-    NotesAdapter() {}
     NotesAdapter(List<Note> noteList, MainActivity mainActivity) {
         this.noteList = noteList;
         this.mainActivity = mainActivity;
