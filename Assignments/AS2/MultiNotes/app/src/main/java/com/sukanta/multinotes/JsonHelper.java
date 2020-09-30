@@ -2,13 +2,11 @@ package com.sukanta.multinotes;
 
 import android.util.JsonReader;
 import android.util.JsonWriter;
-import android.util.Log;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,7 +17,6 @@ import java.util.Locale;
 
 public class JsonHelper {
     private static final String format = "yyMMddHHmmssZ";
-    private static final String TAG = "JsonHelper";
     DateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
 
     public void writeJsonStream(OutputStream out, List<Note> noteList) throws Exception {
