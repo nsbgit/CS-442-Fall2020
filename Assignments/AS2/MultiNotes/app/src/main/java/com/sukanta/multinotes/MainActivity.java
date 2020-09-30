@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -134,14 +133,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onLongClick(View view) {
-        try {
-            Log.d(TAG, "onLongClick: ");
-            showAlertDialog(view);
-        } catch (Exception e) {
-            Log.e(TAG, "onLongClick: ", e);
-        } finally {
-            return true;
-        }
+        Log.d(TAG, "onLongClick: ");
+        showAlertDialog(view);
+        return true;
     }
 
     private void goToAboutActivity() {
