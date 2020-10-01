@@ -156,6 +156,7 @@ public class EditActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int id) {
                     Log.d(TAG, "onClick NO: id: " + id);
                     dialog.dismiss();
+                    finish();
                 }
             });
 
