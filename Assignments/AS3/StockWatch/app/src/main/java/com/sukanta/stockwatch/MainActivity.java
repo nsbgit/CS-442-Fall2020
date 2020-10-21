@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,5 +63,15 @@ public class MainActivity extends AppCompatActivity {
     private void doneWithSwipeRefresh(long i) {
         // TODO stuff here
         //swiper.setRefreshing(false); // This stops the busy-circle
+    }
+
+    private void downloadStockNames() {
+        new Thread(
+                new NameDownloaderAsyncTask(this)
+        ).start();
+    }
+
+    public void receiveNameDownloaderData(HashMap<String, String> hashMap) {
+
     }
 }
