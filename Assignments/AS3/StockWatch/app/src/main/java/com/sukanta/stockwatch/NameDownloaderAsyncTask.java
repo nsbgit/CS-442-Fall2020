@@ -28,7 +28,17 @@ public class NameDownloaderAsyncTask implements Runnable {
     public void run() {
         String jsonString = getData();
         HashMap<String,String> hashMap = jsonToMap(jsonString);
-        mainActivity.receiveNameDownloaderData(hashMap);
+        callbackMainActivity(hashMap);
+    }
+
+    private void callbackMainActivity(final HashMap<String, String> hashMap) {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // TODO send data to main activity
+                mainActivity.receiveNameDownloaderData(hashMap);
+            }
+        });
     }
 
     private String getData() {
