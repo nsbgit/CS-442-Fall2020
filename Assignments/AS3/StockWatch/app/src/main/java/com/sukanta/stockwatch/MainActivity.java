@@ -1,18 +1,24 @@
 package com.sukanta.stockwatch;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Locale;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
+
+    private final List<Stock> stockList = new ArrayList<>();
+    private RecyclerView recyclerView;
 
     private SwipeRefreshLayout swiper;
     private int ctr = 1;
@@ -22,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        downloadStockNames();
 
 //        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override
@@ -73,5 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void receiveNameDownloaderData(HashMap<String, String> hashMap) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        return false;
     }
 }
