@@ -30,6 +30,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.text.InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 
     private static final String TAG = "MainActivity";
@@ -205,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setMessage("Please Enter A Stock Symbol");
         builder.setCancelable(false);
         final EditText editText = new EditText(this);
-        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT|TYPE_TEXT_FLAG_CAP_CHARACTERS);
         editText.setGravity(Gravity.CENTER_HORIZONTAL);
         builder.setView(editText);
 
