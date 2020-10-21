@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StockWatch</string>
+    <string name="stock_watch">Stock Watch</string>
+    <string name="api_token">pk_7919d4ba3718489f8d84fcb05e45e807</string>
 </resources>
