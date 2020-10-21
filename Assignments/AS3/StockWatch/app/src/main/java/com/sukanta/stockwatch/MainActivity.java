@@ -340,9 +340,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "onLongClick: ");
         final int id = recyclerView.getChildLayoutPosition(view);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete");
-        builder.setMessage("Do you want to delete "+((TextView)view.findViewById(R.id.companysymbolTextView)).getText().toString()+" stock ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle("Delete Stock");
+        builder.setIcon(R.drawable.baseline_delete_forever_black_18);
+        builder.setMessage("Delete Stock Symbol "+((TextView)view.findViewById(R.id.companysymbolTextView)).getText().toString()+" ?");
+        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ///TODO remove stock and notify all
@@ -351,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 stocksAdapter.notifyDataSetChanged();
                 Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
             }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 return;
