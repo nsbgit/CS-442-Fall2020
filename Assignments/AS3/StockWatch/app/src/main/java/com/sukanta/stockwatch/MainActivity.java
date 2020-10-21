@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
+                    Log.d(TAG, "onRefresh: ");
                     if (!isNetworkAvailable()) {
                         refreshLayout.setRefreshing(false);
                         errorDialog();
