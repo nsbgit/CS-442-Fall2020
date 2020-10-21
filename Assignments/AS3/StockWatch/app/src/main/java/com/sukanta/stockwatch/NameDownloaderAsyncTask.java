@@ -51,6 +51,9 @@ public class NameDownloaderAsyncTask implements Runnable {
             connection.setRequestMethod("GET");
             InputStream inputStream = connection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                return null;
+            }
             String line;
             while ((line=bufferedReader.readLine())!=null){
                 stringBuilder.append(line).append("\n");
