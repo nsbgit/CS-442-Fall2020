@@ -388,11 +388,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return stockOption;
     }
 
-    private void notSuchDataDialog(String toString) {
+    private void notSuchDataDialog(String stockSymbol) {
         Log.d(TAG, "notSuchDataDialog: ");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Problem Occurred");
-        builder.setMessage("No such data: ("+toString+") found, please enter valid inputs");
+        builder.setTitle("Symbol not found: " + stockSymbol);
+        builder.setMessage("Data for symbol "+ stockSymbol +" not found, please enter valid inputs");
         AlertDialog dialog = builder.create();
         dialog.show();
     }
