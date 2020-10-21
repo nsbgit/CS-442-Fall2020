@@ -284,10 +284,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void receiveNameDownloaderData(HashMap<String, String> hashMap) {
-        Log.d(TAG, "receiveNameDownloaderData: nameDownloader completed. Count " + hashMap.size());
         if (hashMap != null && !hashMap.isEmpty()) {
+            Log.d(TAG, "receiveNameDownloaderData: nameDownloader completed. Count " + hashMap.size());
             this.symbolMap = hashMap;
         }
+        else
+            Log.d(TAG, "receiveNameDownloaderData: Empty hash map");
     }
 
     private void downloadStockDetails(String stockSymbol) {
@@ -406,8 +408,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void duplicateItemDialog(String s) {
         Log.d(TAG, "duplicateItemDialog: ");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Duplicate Item");
-        builder.setMessage("Stock already exists in our list");
+        builder.setIcon(R.drawable.baseline_warning_black_18);
+        builder.setTitle("Duplicate Stock");
+        builder.setMessage("Stock symbol " + s.toUpperCase() + " is already displayed.");
         AlertDialog dialog = builder.create();
         dialog.show();
     }
