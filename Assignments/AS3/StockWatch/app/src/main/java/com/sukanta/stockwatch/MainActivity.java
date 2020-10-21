@@ -209,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final EditText editText = new EditText(this);
         editText.setInputType(InputType.TYPE_CLASS_TEXT|TYPE_TEXT_FLAG_CAP_CHARACTERS);
         editText.setGravity(Gravity.CENTER_HORIZONTAL);
+        editText.setLongClickable(false);
         builder.setView(editText);
 
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
