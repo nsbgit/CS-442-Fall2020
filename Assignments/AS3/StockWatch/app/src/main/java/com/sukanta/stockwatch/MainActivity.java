@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d(TAG, "onRefresh: ");
                     if (!isNetworkAvailable()) {
                         refreshLayout.setRefreshing(false);
-                        errorDialog();
+                        errorDialog("Stocks cannot be updated without a Network Connection");
                     } else {
                         refreshData();
                     }
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d(TAG, "onOptionsItemSelected: started");
 //                    Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
                     if(!isNetworkAvailable()){
-                        errorDialog();
+                        errorDialog(null);
                     }
                     else {
                         openDialogForStock();
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if(!isNetworkAvailable()){
-                    errorDialog();
+                    errorDialog(null);
                     return;
                 }
                 else if(editText.getText().toString().isEmpty()) {           //empty search
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // TODO swipe refresh work here
         if (!isNetworkAvailable()) {
             refreshLayout.setRefreshing(false);
-            errorDialog();
+            errorDialog(null);
         } else {
             refreshData();
         }
@@ -362,11 +362,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    private void errorDialog() {
+    private void errorDialog(String msg) {
         Log.d(TAG, "errorDialog: ");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if(msg == null)
+            msg = "Stocks cannot be added without a Network Connection";
         builder.setTitle("Network Connection Error");
-        builder.setMessage("Stocks cannot be added without a Network Connection");
+        builder.setMessage(msg);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
