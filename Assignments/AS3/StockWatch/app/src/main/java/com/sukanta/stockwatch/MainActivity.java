@@ -184,7 +184,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.miAddStock:
                     Log.d(TAG, "onOptionsItemSelected: started");
 //                    Toast.makeText(this, "Add selected", Toast.LENGTH_SHORT).show();
-                    openDialogForStock();
+                    if(!isNetworkAvailable()){
+                        errorDialog();
+                    }
+                    else {
+                        openDialogForStock();
+                    }
                     Log.d(TAG, "onOptionsItemSelected: end");
                     return true;
                 default:
@@ -359,7 +364,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "errorDialog: ");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Network Connection Error");
-        builder.setMessage("Please check your network connection");
+        builder.setMessage("Stocks cannot be added without a Network Connection");
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
