@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editText.setLongClickable(false);
         builder.setView(editText);
 
-        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if(!isNetworkAvailable()){
                     errorDialog();
@@ -250,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Toast.makeText(MainActivity.this, "You changed your mind!", Toast.LENGTH_SHORT).show();
                 return;
