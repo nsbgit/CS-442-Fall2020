@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LocationExample</string>
+    <string name="no_perm">No Permission</string>
+    <string name="no_locs">Location Unavailable</string>
+    <string name="location_example">Location Example</string>
+    <string name="recheck_location">ReCheck Location</string>
+</resources>
