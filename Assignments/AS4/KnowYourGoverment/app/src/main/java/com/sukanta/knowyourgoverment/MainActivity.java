@@ -20,27 +20,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private final ArrayList<Official> officialArrayList = new ArrayList<>();
     private RecyclerView recyclerView;
+    private OfficialsAdapter officialsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //downloadData("Chicago");
-
-
-        //Make some data - not always needed - just used to fill list
-        for (int i = 0; i < 30; i++) {
-            Official official = new Official();
-            official.setOfficeName("OfficeName"+i);
-            official.setOfficialName("OfficialName"+i);
-            official.setParty("Party"+1);
-            officialArrayList.add(official);
-        }
+        downloadData("Chicago");
 
         recyclerView = findViewById(R.id.rvRecycler);
 
-        OfficialsAdapter officialsAdapter = new OfficialsAdapter(officialArrayList, this);
+        officialsAdapter = new OfficialsAdapter(officialArrayList, this);
         recyclerView.setAdapter(officialsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -78,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void receiveDataDownloaderData(Office office, List<Official> officialList) {
         Log.d(TAG, "receiveDataDownloaderData: officialList size" + officialList.size());
+        officialArrayList.addAll(officialList);
+        officialsAdapter.notifyDataSetChanged();
     }
 
     @Override
