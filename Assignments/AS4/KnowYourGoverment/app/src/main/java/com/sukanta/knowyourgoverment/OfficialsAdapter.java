@@ -1,5 +1,6 @@
 package com.sukanta.knowyourgoverment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,9 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class OfficialsAdapter extends RecyclerView.Adapter<OfficialsViewHolder> {
     private List<Official> officialList;
@@ -26,7 +25,6 @@ public class OfficialsAdapter extends RecyclerView.Adapter<OfficialsViewHolder> 
     public OfficialsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.officials_row, parent, false);
-
         itemView.setOnClickListener(mainActivity);
         itemView.setOnLongClickListener(mainActivity);
 
@@ -35,17 +33,22 @@ public class OfficialsAdapter extends RecyclerView.Adapter<OfficialsViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull OfficialsViewHolder holder, int position) {
-        Official official = officialList.get(position);
+        try {
+            Official official = officialList.get(position);
 
-        String officeName = official.getOfficeName();
-        String officialNameAndParty = official.getOfficialName() + " (" + official.getParty() + ")";
-
-        holder.tvOfficeName.setText(officeName);
-        holder.tvOfficialNameAndParty.setText(officialNameAndParty);
+            holder.tvOfficeName.setText(official.getOfficeName());
+            holder.tvOfficialNameAndParty.setText(official.getOfficialName() + " (" + official.getParty() + ")");
+        } catch (Exception e) {
+            Log.e(TAG, "onBindViewHolder: ", e);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return officialList.size();
+        try {
+            return officialList.size();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }
