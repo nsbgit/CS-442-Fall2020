@@ -35,7 +35,10 @@ public class DataDownloader implements Runnable {
     public void run() {
         String jsonString = getData();
         office = getOffices(jsonString);
-        List<Official> officialList = getOfficials(jsonString);
+        List<Official> officialList = null;
+        if (office != null) {
+            officialList = getOfficials(jsonString);
+        }
         callbackMainActivity(office, officialList);
     }
 
