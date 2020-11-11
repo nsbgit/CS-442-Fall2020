@@ -25,7 +25,7 @@ public class Official implements Serializable {
     private String youTubeId; // omitted
 
     public String getOfficialCity() {
-        return officialCity;
+        return officialCity == null ? "" : officialCity;
     }
 
     public void setOfficialCity(String officialCity) {
@@ -33,7 +33,7 @@ public class Official implements Serializable {
     }
 
     public String getOfficialState() {
-        return officialState;
+        return officialState == null ? "" : officialState;
     }
 
     public void setOfficialState(String officialState) {
@@ -41,7 +41,7 @@ public class Official implements Serializable {
     }
 
     public String getOfficialZip() {
-        return officialZip;
+        return officialZip == null ? "" : officialZip;
     }
 
     public void setOfficialZip(String zip) {
@@ -49,7 +49,7 @@ public class Official implements Serializable {
     }
 
     public String getOfficeName() {
-        return officeName;
+        return officeName == null ? "" : officeName;
     }
 
     public void setOfficeName(String officeName) {
@@ -57,7 +57,7 @@ public class Official implements Serializable {
     }
 
     public String getOfficialName() {
-        return officialName;
+        return officialName == null ? "" : officialName;
     }
 
     public void setOfficialName(String officialName) {
@@ -65,7 +65,7 @@ public class Official implements Serializable {
     }
 
     public String getOfficialAddress() {
-        return officialAddress;
+        return officialAddress == null ? "" : officialAddress;
     }
 
     public void setOfficialAddress(String officialAddress) {
@@ -73,7 +73,7 @@ public class Official implements Serializable {
     }
 
     public String getParty() {
-        return party;
+        return party == null ? "" : party;
     }
 
     public void setParty(String party) {
@@ -81,7 +81,7 @@ public class Official implements Serializable {
     }
 
     public String getPhone() {
-        return phone;
+        return phone == null ? "" : phone;
     }
 
     public void setPhone(String phone) {
@@ -89,7 +89,7 @@ public class Official implements Serializable {
     }
 
     public String getUrl() {
-        return url;
+        return url == null ? "" : url;
     }
 
     public void setUrl(String url) {
@@ -97,7 +97,7 @@ public class Official implements Serializable {
     }
 
     public String getEmail() {
-        return email;
+        return email == null ? "" : email;
     }
 
     public void setEmail(String email) {
@@ -105,7 +105,7 @@ public class Official implements Serializable {
     }
 
     public String getPhotoUrl() {
-        return photoUrl;
+        return photoUrl == null ? "" : photoUrl;
     }
 
     public void setPhotoUrl(String photoUrl) {
@@ -113,7 +113,7 @@ public class Official implements Serializable {
     }
 
     public String getFacebookId() {
-        return facebookId;
+        return facebookId == null ? "" : facebookId;
     }
 
     public void setFacebookId(String facebookId) {
@@ -121,7 +121,7 @@ public class Official implements Serializable {
     }
 
     public String getTwitterId() {
-        return twitterId;
+        return twitterId == null ? "" : twitterId;
     }
 
     public void setTwitterId(String twitterId) {
@@ -129,7 +129,7 @@ public class Official implements Serializable {
     }
 
     public String getYouTubeId() {
-        return youTubeId;
+        return youTubeId == null ? "" : youTubeId;
     }
 
     public void setYouTubeId(String youTubeId) {
