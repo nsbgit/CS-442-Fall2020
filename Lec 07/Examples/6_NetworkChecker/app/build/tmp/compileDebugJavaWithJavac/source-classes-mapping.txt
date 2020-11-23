@@ -1,0 +1,4 @@
+com/christopherhield/networkchecker/MainActivity.java
+ com.christopherhield.networkchecker.MainActivity
+com/christopherhield/networkchecker/BuildConfig.java
+ com.christopherhield.networkchecker.BuildConfig
