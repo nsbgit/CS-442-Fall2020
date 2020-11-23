@@ -53,9 +53,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initializeLocationManager();
+        //initializeLocationManager();
 
-        downloadData("Chicago");
+        if (isNetworkAvailable()) {
+            downloadData("Chicago");
+        }
+        else {
+            errorDialog(null);
+        }
+
+
+
 
         recyclerView = findViewById(R.id.rvRecycler);
 
