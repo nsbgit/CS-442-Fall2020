@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initializeLocationManager();
-//        latLong ="41.8349, -87.6270";// TODO delete IITC
+        latLong ="41.8349, -87.6270";// TODO delete IITC
         zipCode = getZipCodeFromLatLong(latLong);
 
         if (isNetworkAvailable()) {
