@@ -12,6 +12,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d(TAG, "onOptionsItemSelected: ");
             switch (item.getItemId()) {
                 case R.id.mInfo:
-                    Toast.makeText(getApplicationContext(),"Info Clicked", Toast.LENGTH_SHORT).show();
+                    goToAboutActivity();
                     return true;
                 case R.id.mSearch:
                     Log.d(TAG, "onOptionsItemSelected: started");
@@ -214,6 +215,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             Log.e(TAG, "onOptionsItemSelected: ", e);
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void goToAboutActivity() {
+        try {
+            Log.d(TAG, "goToAboutActivity: ");
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "goToAboutActivity: ", e);
         }
     }
 
