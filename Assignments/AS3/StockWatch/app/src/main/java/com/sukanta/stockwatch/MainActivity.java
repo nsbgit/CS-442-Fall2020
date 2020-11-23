@@ -294,9 +294,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void downloadStockDetails(String stockSymbol) {
         Log.d(TAG, "downloadStockDetails: Symbol = " + stockSymbol);
-        new Thread(
-                new StockDownloaderAsyncTask(this, stockSymbol)
-        ).start();
+        if (isNetworkAvailable()) {
+            new Thread(
+                    new StockDownloaderAsyncTask(this, stockSymbol)
+            ).start();
+        }
+        else {
+            String msg = "No network available";
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+            Log.d(TAG, msg);
+        }
     }
 
     public void receiveStockDownloaderData(Stock stock) {
