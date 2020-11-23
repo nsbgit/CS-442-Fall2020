@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GeoCoder</string>
+    <string name="nothing_found">Nothing Found</string>
+    <string name="geocode_a_lat_lon">GeoCode a Lat/Lon</string>
+    <string name="geocode_from_location_name">GeoCode From Location Name</string>
+    <string name="enter_a_lat_long_or_location_name">Enter a Lat,Long or Location Name</string>
+</resources>
