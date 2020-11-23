@@ -12,7 +12,9 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -30,6 +32,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -47,29 +50,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LocationManager locationManager;
     private Criteria criteria;
     private String latLong = "";
+    private String zipCode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initializeLocationManager();
+        initializeLocationManager();
+//        latLong ="41.8349, -87.6270";// TODO delete IITC
+        zipCode = getZipCodeFromLatLong(latLong);
 
         if (isNetworkAvailable()) {
-            downloadData("Chicago");
+            downloadData(zipCode);
         }
         else {
             errorDialog(null);
         }
-
-
-
 
         recyclerView = findViewById(R.id.rvRecycler);
 
         officialsAdapter = new OfficialsAdapter(officialArrayList, this);
         recyclerView.setAdapter(officialsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private String getZipCodeFromLatLong(String latLong) {
+        String zip = "";
+        if (latLong.isEmpty()) {
+            Log.d(TAG, "getZipCodeFromLatLong: latlong is empty");
+            return zip;
+        }
+        else if (!latLong.contains(",")) {
+            Log.d(TAG, "getZipCodeFromLatLong: Invalid latlong value : " + latLong);
+            return zip;
+        }
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            String[] latLon = latLong.split(",");
+            double lat = Double.parseDouble(latLon[0]);
+            double lon = Double.parseDouble(latLon[1]);
+
+            List<Address> addresses = geocoder.getFromLocation(lat, lon, 10);
+            if (addresses != null && addresses.size() > 0) {
+                String postalCode = addresses.get(0).getPostalCode();
+                zip = postalCode == null ? "" : postalCode;
+                Log.d(TAG, "onCreate: address form latlong value: " + addresses.get(0));
+            }
+            else {
+                Log.d(TAG, "getZipCodeFromLatLong: invalid address");
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+        return zip;
     }
 
     private void initializeLocationManager() {
