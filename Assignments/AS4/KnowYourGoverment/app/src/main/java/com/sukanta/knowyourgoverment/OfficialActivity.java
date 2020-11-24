@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -244,5 +246,57 @@ public class OfficialActivity extends AppCompatActivity {
 //                                Log.d(TAG, "onError: " + e.getMessage());
 //                            }
 //                        });
+    }
+
+    public void clickFacebook(View v) {
+        String fbName = official.getFacebookId();
+        String FACEBOOK_URL = "https://www.facebook.com/" + fbName;
+
+        Intent intent;
+        String urlToUse;
+        try {
+            getPackageManager().getPackageInfo("com.facebook.katana", 0);
+
+            int versionCode = getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
+            if (versionCode >= 3002850) { //newer versions of fb app
+                urlToUse = "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+            } else { //older versions of fb app
+                urlToUse = "fb://page/" + fbName;
+            }
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToUse));
+        } catch (Exception e) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(FACEBOOK_URL));
+        }
+
+        startActivity(intent);
+    }
+
+    public void clickTwitter(View v) {
+        String user = official.getTwitterId();
+        String twitterAppUrl = "twitter://user?screen_name=" + user;
+        String twitterWebUrl = "https://twitter.com/" + user;
+
+        Intent intent;
+        try {
+            getPackageManager().getPackageInfo("com.twitter.android", 0);
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterAppUrl));
+        } catch (Exception e) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterWebUrl));
+        }
+        startActivity(intent);
+    }
+
+    public void youTubeClicked(View v) {
+        String name = official.getYouTubeId();
+        Intent intent = null;
+        try {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setPackage("com.google.android.youtube");
+            intent.setData(Uri.parse("https://www.youtube.com/" + name));
+            startActivity(intent);
+        } catch (Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.youtube.com/" + name)));
+        }
     }
 }
