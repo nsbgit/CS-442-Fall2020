@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ImageDownload</string>
+    <string name="image1">https://cdn.spacetelescope.org/archives/images/thumb700x/heic1501a.jpg</string>
+    <string name="image2">https://photojournal.jpl.nasa.gov/jpeg/PIA23121.jpg</string>
+    <string name="image3">https://images-assets.nasa.gov/image/6900952/does_not_exist.jpg</string>
+    <string name="button">Button</string>
+    <string name="fit_center">Fit Center</string>
+</resources>
