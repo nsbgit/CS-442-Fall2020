@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KnowYourGoverment"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".OfficialActivity"></activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
