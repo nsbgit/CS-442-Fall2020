@@ -1,9 +1,14 @@
 package com.sukanta.knowyourgoverment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class OfficialActivity extends AppCompatActivity {
@@ -14,6 +19,8 @@ public class OfficialActivity extends AppCompatActivity {
     private Official official;
     private String locationText = "";
     private TextView tvLocation;
+    private ConstraintLayout constraintLayout;
+    private ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +33,23 @@ public class OfficialActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        tvLocation = findViewById(R.id.tvLocation);
+        tvLocation = (TextView) findViewById(R.id.tvLocation);
+        constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
     }
 
     private void loadData() {
         tvLocation.setText(locationText);
+        String partyName = official.getParty();
+        if (official.getParty().toUpperCase().contains("DEMOCRATIC")) {
+            scrollView.setBackgroundColor(Color.BLUE);
+        }
+        else if (official.getParty().toUpperCase().contains("REPUBLICAN")) {
+            scrollView.setBackgroundColor(Color.RED);
+        }
+        else {
+            scrollView.setBackgroundColor(Color.BLACK);
+        }
     }
 
     private void getData() {
