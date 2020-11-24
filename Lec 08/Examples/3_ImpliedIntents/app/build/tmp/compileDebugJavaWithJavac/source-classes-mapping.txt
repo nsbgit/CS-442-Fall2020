@@ -1,0 +1,4 @@
+com/christopherhield/impliedintentwebbrowser/MainActivity.java
+ com.christopherhield.impliedintentwebbrowser.MainActivity
+com/christopherhield/impliedintentwebbrowser/BuildConfig.java
+ com.christopherhield.impliedintentwebbrowser.BuildConfig
