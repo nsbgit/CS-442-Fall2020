@@ -1,0 +1,4 @@
+com/christopherhield/linkifyexamples/BuildConfig.java
+ com.christopherhield.linkifyexamples.BuildConfig
+com/christopherhield/linkifyexamples/MainActivity.java
+ com.christopherhield.linkifyexamples.MainActivity

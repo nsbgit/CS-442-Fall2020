@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LinkifyExamples</string>
+    <string name="shedd_aquarium">Shedd Aquarium</string>
+    <string name="shedd_url">http://www.sheddaquarium.org</string>
+    <string name="phone_ext">x2550</string>
+    <string name="address">1200 S. Lake Shore Dr., Chicago, IL 60605</string>
+    <string name="email">info@sheddaquarium.org</string>
+    <string name="ph_num">(312) 939-2438</string>
+</resources>
