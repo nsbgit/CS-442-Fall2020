@@ -1,5 +1,6 @@
 package com.sukanta.knowyourgoverment;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -107,45 +108,45 @@ public class OfficialActivity extends AppCompatActivity {
         String officialFullAddress = official.getOfficialFullAddress();
         tvAddressValue.setText(officialFullAddress);
         if (officialFullAddress != null && !officialFullAddress.isEmpty()) {
-//            tvAddressLabel.setVisibility(View.VISIBLE);
-//            tvAddressValue.setVisibility(View.VISIBLE);
+            tvAddressLabel.setVisibility(View.VISIBLE);
+            tvAddressValue.setVisibility(View.VISIBLE);
         }
         else {
-//            tvAddressLabel.setVisibility(View.GONE);
-//            tvAddressValue.setVisibility(View.GONE);
+            tvAddressLabel.setVisibility(View.INVISIBLE);
+            tvAddressValue.setVisibility(View.INVISIBLE);
         }
 
         String phone = official.getPhone();
         tvPhoneValue.setText(phone);
         if (phone != null && !phone.isEmpty()) {
-//            tvPhoneLabel.setVisibility(View.VISIBLE);
-//            tvPhoneValue.setVisibility(View.VISIBLE);
+            tvPhoneLabel.setVisibility(View.VISIBLE);
+            tvPhoneValue.setVisibility(View.VISIBLE);
         }
         else {
-//            tvPhoneLabel.setVisibility(View.GONE);
-//            tvPhoneValue.setVisibility(View.GONE);
+            tvPhoneLabel.setVisibility(View.INVISIBLE);
+            tvPhoneValue.setVisibility(View.INVISIBLE);
         }
 
         String email = official.getEmail();
         tvEmailValue.setText(email);
         if (email != null && !email.isEmpty()) {
-//            tvEmailLabel.setVisibility(View.VISIBLE);
-//            tvEmailValue.setVisibility(View.VISIBLE);
+            tvEmailLabel.setVisibility(View.VISIBLE);
+            tvEmailValue.setVisibility(View.VISIBLE);
         }
         else {
-//            tvEmailLabel.setVisibility(View.GONE);
-//            tvEmailValue.setVisibility(View.GONE);
+            tvEmailLabel.setVisibility(View.INVISIBLE);
+            tvEmailValue.setVisibility(View.INVISIBLE);
         }
 
         String website = official.getUrl();
         tvWebsiteValue.setText(website);
         if (website != null && !website.isEmpty()) {
-//            tvWebsiteLabel.setVisibility(View.VISIBLE);
-//            tvWebsiteValue.setVisibility(View.VISIBLE);
+            tvWebsiteLabel.setVisibility(View.VISIBLE);
+            tvWebsiteValue.setVisibility(View.VISIBLE);
         }
         else {
-//            tvWebsiteLabel.setVisibility(View.GONE);
-//            tvWebsiteValue.setVisibility(View.GONE);
+            tvWebsiteLabel.setVisibility(View.INVISIBLE);
+            tvWebsiteValue.setVisibility(View.INVISIBLE);
         }
 
         String facebookId = official.getFacebookId();
@@ -246,6 +247,33 @@ public class OfficialActivity extends AppCompatActivity {
 //                                Log.d(TAG, "onError: " + e.getMessage());
 //                            }
 //                        });
+    }
+
+    private void errorDialog(String msg) {
+        Log.d(TAG, "errorDialog: ");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if(msg == null)
+            msg = "Data can not be downloaded without a Network Connection";
+        builder.setTitle("Network Connection Error");
+        builder.setMessage(msg);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public void clickMap(View v) {
+        String address = official.getOfficialAddress();
+        address = "Shedd Aquarium, 1200 S. Lake Shore Drive, Chicago, IL, 60605";
+        Uri mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
+        intent.setPackage("com.google.android.apps.maps");
+//        intent.setPackage("com.google.android.gms.maps");
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            errorDialog("No Application found that handles ACTION_VIEW (geo) intents");
+        }
     }
 
     public void clickFacebook(View v) {
