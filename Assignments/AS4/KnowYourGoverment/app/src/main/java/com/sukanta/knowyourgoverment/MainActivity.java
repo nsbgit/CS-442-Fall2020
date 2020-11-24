@@ -47,17 +47,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final ArrayList<Official> officialArrayList = new ArrayList<>();
     private RecyclerView recyclerView;
     private OfficialsAdapter officialsAdapter;
+    private TextView tvLocation;
     private static int MY_LOCATION_REQUEST_CODE_ID = 111;
     private LocationManager locationManager;
     private Criteria criteria;
     private String latLong = "";
     private String zipCode = "";
+    private static final String OFFICIAL_KEY = "OFFICIAL";
+    private static final String LOCATION_KEY = "LOCATION";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvLocation = findViewById(R.id.tvLocation);
         initializeLocationManager();
         latLong ="41.8349, -87.6270";// TODO delete IITC
         zipCode = getZipCodeFromLatLong(latLong);
@@ -228,6 +232,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void goToEditActivity(int position) {
+        try {
+            Log.d(TAG, "goToEditActivity: ");
+            Official official;
+            if (position < 0) {
+                official = new Official();
+            }
+            else {
+                official = officialArrayList.get(position);
+            }
+
+            Intent intent = new Intent(this, OfficialActivity.class);
+            intent.putExtra(OFFICIAL_KEY, official);
+//            intent.putExtra(POSITION_KEY, position);
+
+            intent.putExtra(LOCATION_KEY, tvLocation.getText());
+//            startActivityForResult(intent, NOTE_REQUEST);
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "goToEditActivity: ", e);
+        }
+    }
+
     public void downloadData(String address) {
         new Thread(new DataDownloader(this, address)).start();
     }
@@ -250,7 +277,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getApplicationContext(),"On Clicked", Toast.LENGTH_SHORT).show();
+        try {
+            Log.d(TAG, "onClick: ");
+            int position = recyclerView.getChildLayoutPosition(v);
+            goToEditActivity(position);
+        } catch (Exception e) {
+            Log.e(TAG, "onClick: ", e);
+        }
     }
 
     @Override
