@@ -72,6 +72,17 @@ public class Official implements Serializable {
         this.officialAddress = officialAddress;
     }
 
+    public String getOfficialFullAddress() {
+        String fullAddress = "";
+        fullAddress = String.format("%s\n%s\n%s, %s %s"
+        , getOfficeName()
+        , getOfficialAddress()
+        , getOfficialCity()
+        , getOfficialState()
+        , getOfficialZip());
+        return fullAddress;
+    }
+
     public String getParty() {
         return party == null ? "" : party;
     }
