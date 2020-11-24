@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -38,6 +37,9 @@ public class OfficialActivity extends AppCompatActivity {
     private TextView tvWebsiteValue;
     private ImageView ivOfficialPhoto;
     private ImageView ivPartyLogo;
+    private ImageView ivFacebook;
+    private ImageView ivTwitter;
+    private ImageView ivYouTube;
     private ConstraintLayout constraintLayout;
     private ScrollView scrollView;
 
@@ -66,6 +68,9 @@ public class OfficialActivity extends AppCompatActivity {
         tvWebsiteValue = (TextView) findViewById(R.id.tvWebsiteValue);
         ivOfficialPhoto = (ImageView) findViewById(R.id.ivOfficialPhoto);
         ivPartyLogo = (ImageView) findViewById(R.id.ivPartyLogo);
+        ivFacebook = (ImageView) findViewById(R.id.ivFacebook);
+        ivTwitter = (ImageView) findViewById(R.id.ivTwitter);
+        ivYouTube = (ImageView) findViewById(R.id.ivYouTube);
         constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
     }
@@ -100,45 +105,69 @@ public class OfficialActivity extends AppCompatActivity {
         String officialFullAddress = official.getOfficialFullAddress();
         tvAddressValue.setText(officialFullAddress);
         if (officialFullAddress != null && !officialFullAddress.isEmpty()) {
-            tvAddressLabel.setVisibility(View.GONE);
-            tvAddressValue.setVisibility(View.GONE);
+//            tvAddressLabel.setVisibility(View.VISIBLE);
+//            tvAddressValue.setVisibility(View.VISIBLE);
         }
         else {
-            tvAddressLabel.setVisibility(View.VISIBLE);
-            tvAddressValue.setVisibility(View.VISIBLE);
+//            tvAddressLabel.setVisibility(View.GONE);
+//            tvAddressValue.setVisibility(View.GONE);
         }
 
         String phone = official.getPhone();
         tvPhoneValue.setText(phone);
         if (phone != null && !phone.isEmpty()) {
-            tvPhoneLabel.setVisibility(View.GONE);
-            tvPhoneValue.setVisibility(View.GONE);
+//            tvPhoneLabel.setVisibility(View.VISIBLE);
+//            tvPhoneValue.setVisibility(View.VISIBLE);
         }
         else {
-            tvPhoneLabel.setVisibility(View.VISIBLE);
-            tvPhoneValue.setVisibility(View.VISIBLE);
+//            tvPhoneLabel.setVisibility(View.GONE);
+//            tvPhoneValue.setVisibility(View.GONE);
         }
 
         String email = official.getEmail();
         tvEmailValue.setText(email);
         if (email != null && !email.isEmpty()) {
-            tvEmailLabel.setVisibility(View.GONE);
-            tvEmailValue.setVisibility(View.GONE);
+//            tvEmailLabel.setVisibility(View.VISIBLE);
+//            tvEmailValue.setVisibility(View.VISIBLE);
         }
         else {
-            tvEmailLabel.setVisibility(View.VISIBLE);
-            tvEmailValue.setVisibility(View.VISIBLE);
+//            tvEmailLabel.setVisibility(View.GONE);
+//            tvEmailValue.setVisibility(View.GONE);
         }
 
         String website = official.getUrl();
         tvWebsiteValue.setText(website);
         if (website != null && !website.isEmpty()) {
-            tvWebsiteLabel.setVisibility(View.GONE);
-            tvWebsiteValue.setVisibility(View.GONE);
+//            tvWebsiteLabel.setVisibility(View.VISIBLE);
+//            tvWebsiteValue.setVisibility(View.VISIBLE);
         }
         else {
-            tvWebsiteLabel.setVisibility(View.VISIBLE);
-            tvWebsiteValue.setVisibility(View.VISIBLE);
+//            tvWebsiteLabel.setVisibility(View.GONE);
+//            tvWebsiteValue.setVisibility(View.GONE);
+        }
+
+        String facebookId = official.getFacebookId();
+        if (facebookId != null && !facebookId.isEmpty()) {
+            ivFacebook.setVisibility(View.VISIBLE);
+        }
+        else {
+            ivFacebook.setVisibility(View.GONE);
+        }
+
+        String twitterId = official.getTwitterId();
+        if (twitterId != null && !twitterId.isEmpty()) {
+            ivTwitter.setVisibility(View.VISIBLE);
+        }
+        else {
+            ivTwitter.setVisibility(View.GONE);
+        }
+
+        String youTubeId = official.getYouTubeId();
+        if (youTubeId != null && !youTubeId.isEmpty()) {
+            ivYouTube.setVisibility(View.VISIBLE);
+        }
+        else {
+            ivYouTube.setVisibility(View.GONE);
         }
     }
 
