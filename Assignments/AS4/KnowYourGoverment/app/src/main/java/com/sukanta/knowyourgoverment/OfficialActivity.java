@@ -19,6 +19,9 @@ public class OfficialActivity extends AppCompatActivity {
     private Official official;
     private String locationText = "";
     private TextView tvLocation;
+    private TextView tvOffice;
+    private TextView tvName;
+    private TextView tvParty;
     private ConstraintLayout constraintLayout;
     private ScrollView scrollView;
 
@@ -34,13 +37,16 @@ public class OfficialActivity extends AppCompatActivity {
 
     private void initialize() {
         tvLocation = (TextView) findViewById(R.id.tvLocation);
+        tvOffice = (TextView) findViewById(R.id.tvOffice);
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvParty = (TextView) findViewById(R.id.tvParty);
         constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
     }
 
     private void loadData() {
         tvLocation.setText(locationText);
-        String partyName = official.getParty();
+
         if (official.getParty().toUpperCase().contains("DEMOCRATIC")) {
             scrollView.setBackgroundColor(Color.BLUE);
         }
@@ -50,6 +56,10 @@ public class OfficialActivity extends AppCompatActivity {
         else {
             scrollView.setBackgroundColor(Color.BLACK);
         }
+
+        tvOffice.setText(official.getOfficeName());
+        tvName.setText(official.getOfficialName());
+        tvParty.setText(String.format("(%s)", official.getParty()));
     }
 
     private void getData() {
