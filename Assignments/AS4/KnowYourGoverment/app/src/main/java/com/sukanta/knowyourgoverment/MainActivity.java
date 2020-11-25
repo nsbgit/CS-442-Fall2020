@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "MainActivity";
     private final ArrayList<Official> officialArrayList = new ArrayList<>();
+    private ConstraintLayout constraintLayout;
     private RecyclerView recyclerView;
     private OfficialsAdapter officialsAdapter;
     private TextView tvLocation;
@@ -60,23 +61,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         tvLocation = findViewById(R.id.tvLocation);
+        recyclerView = findViewById(R.id.rvRecycler);
+        officialsAdapter = new OfficialsAdapter(officialArrayList, this);
+        recyclerView.setAdapter(officialsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         initializeLocationManager();
-        latLong ="41.8349, -87.6270";// TODO delete IITC
+        //latLong ="41.8349, -87.6270";// TODO delete IITC
+//        latLong = "";
         zipCode = getZipCodeFromLatLong(latLong);
 
-        if (isNetworkAvailable()) {
+        if (!zipCode.isEmpty() && isNetworkAvailable()) {
             downloadData(zipCode);
         }
         else {
             errorDialog(null);
         }
-
-        recyclerView = findViewById(R.id.rvRecycler);
-
-        officialsAdapter = new OfficialsAdapter(officialArrayList, this);
-        recyclerView.setAdapter(officialsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private String getZipCodeFromLatLong(String latLong) {
@@ -303,12 +305,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //noinspection deprecation
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
 
-        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         if (netInfo != null && netInfo.isConnected()) {
             constraintLayout.setBackgroundColor(getResources().getColor(R.color.purple_700, null));
             return true;
         } else {
-            constraintLayout.setBackgroundColor(Color.WHITE);
             return false;
         }
     }
@@ -316,8 +316,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void errorDialog(String msg) {
         Log.d(TAG, "errorDialog: ");
         tvLocation.setText("No Data For Location");
+
+        constraintLayout.setBackgroundColor(Color.WHITE);
+
         officialArrayList.clear();
         officialsAdapter.notifyDataSetChanged();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         if(msg == null)
             msg = "Data can not be accessed/ loaded without an internet connection.";
