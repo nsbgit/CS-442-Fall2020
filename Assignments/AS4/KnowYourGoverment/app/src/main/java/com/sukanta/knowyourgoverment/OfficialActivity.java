@@ -249,12 +249,14 @@ public class OfficialActivity extends AppCompatActivity {
 //                        });
     }
 
-    private void errorDialog(String msg) {
+    private void errorDialog(String msg, String title) {
         Log.d(TAG, "errorDialog: ");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         if(msg == null)
             msg = "Data can not be downloaded without a Network Connection";
-        builder.setTitle("Network Connection Error");
+        if (title == null)
+            title = "Error";
+        builder.setTitle(title);
         builder.setMessage(msg);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
@@ -262,18 +264,51 @@ public class OfficialActivity extends AppCompatActivity {
 
     public void clickMap(View v) {
         String address = official.getOfficialAddress();
-        address = "Shedd Aquarium, 1200 S. Lake Shore Drive, Chicago, IL, 60605";
+//        address = "Shedd Aquarium, 1200 S. Lake Shore Drive, Chicago, IL, 60605";
         Uri mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
 
         Intent intent = new Intent(Intent.ACTION_VIEW, mapUri);
         intent.setPackage("com.google.android.apps.maps");
-//        intent.setPackage("com.google.android.gms.maps");
 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
-            errorDialog("No Application found that handles ACTION_VIEW (geo) intents");
+            errorDialog("No Application found that handles ACTION_VIEW (geo) intents", null);
         }
+    }
+
+    public void clickCall(View v) {
+        String number = official.getPhone();
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + number));
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            errorDialog("No Application found that handles ACTION_DIAL (tel) intents", null);
+        }
+    }
+
+    public void clickEmail(View v) {
+        String[] addresses = new String[]{official.getEmail()};
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
+
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "This comes from EXTRA_SUBJECT");
+//        intent.putExtra(Intent.EXTRA_TEXT, "Email text body from EXTRA_TEXT...");
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, 111);
+        } else {
+            errorDialog("No Application found that handles SENDTO (mailto) intents", null);
+        }
+    }
+
+    public void clickUrl(View v) {
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(official.getUrl()));
+        startActivity(i);
     }
 
     public void clickFacebook(View v) {
