@@ -3,6 +3,7 @@ package com.sukanta.knowyourgoverment;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -285,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onLongClick(View v) {
-        Toast.makeText(getApplicationContext(),"On-long Clicked", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"On-long Clicked", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -301,19 +303,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //noinspection deprecation
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
 
+        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         if (netInfo != null && netInfo.isConnected()) {
+            constraintLayout.setBackgroundColor(getResources().getColor(R.color.purple_700, null));
             return true;
         } else {
+            constraintLayout.setBackgroundColor(Color.WHITE);
             return false;
         }
     }
 
     private void errorDialog(String msg) {
         Log.d(TAG, "errorDialog: ");
+        tvLocation.setText("No Data For Location");
+        officialArrayList.clear();
+        officialsAdapter.notifyDataSetChanged();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         if(msg == null)
-            msg = "Data can not be downloaded without a Network Connection";
-        builder.setTitle("Network Connection Error");
+            msg = "Data can not be accessed/ loaded without an internet connection.";
+        builder.setTitle("No Network Connection");
         builder.setMessage(msg);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
