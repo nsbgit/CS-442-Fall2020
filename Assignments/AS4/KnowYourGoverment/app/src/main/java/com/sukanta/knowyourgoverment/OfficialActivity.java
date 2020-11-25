@@ -280,6 +280,17 @@ public class OfficialActivity extends AppCompatActivity {
         }
     }
 
+    public void clickPartyLogo(View v) {
+        String partyUrl = "";
+        if (official.getParty().toUpperCase().contains("DEMOCRATIC")) {
+            partyUrl = "https://democrats.org/";
+        }
+        else if (official.getParty().toUpperCase().contains("REPUBLICAN")) {
+            partyUrl = "https://www.gop.com/";
+        }
+        openUrl(partyUrl);
+    }
+
     public void clickMap(View v) {
         String address = official.getOfficialAddress();
 //        address = "Shedd Aquarium, 1200 S. Lake Shore Drive, Chicago, IL, 60605";
@@ -324,9 +335,8 @@ public class OfficialActivity extends AppCompatActivity {
         }
     }
 
-    public void clickUrl(View v) {
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(official.getUrl()));
-        startActivity(i);
+    public void clickWebsite(View v) {
+        openUrl(official.getUrl());
     }
 
     public void clickFacebook(View v) {
@@ -378,6 +388,13 @@ public class OfficialActivity extends AppCompatActivity {
         } catch (Exception e) {
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.youtube.com/" + name)));
+        }
+    }
+
+    public void openUrl(String url) {
+        if (url != null && !url.isEmpty()) {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(i);
         }
     }
 }
