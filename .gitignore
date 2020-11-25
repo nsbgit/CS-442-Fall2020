@@ -1,6 +1,5 @@
 
 *.lock
 *.iml
-.idea/
 .gradle/
 *.log
