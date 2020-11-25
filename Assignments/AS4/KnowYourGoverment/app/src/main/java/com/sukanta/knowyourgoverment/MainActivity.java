@@ -31,9 +31,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -232,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void goToEditActivity(int position) {
+    public void goToOfficialActivity(int position) {
         try {
             Log.d(TAG, "goToEditActivity: ");
             Official official;
@@ -280,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             Log.d(TAG, "onClick: ");
             int position = recyclerView.getChildLayoutPosition(v);
-            goToEditActivity(position);
+            goToOfficialActivity(position);
         } catch (Exception e) {
             Log.e(TAG, "onClick: ", e);
         }
