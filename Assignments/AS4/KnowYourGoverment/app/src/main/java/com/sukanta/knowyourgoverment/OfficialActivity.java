@@ -262,6 +262,24 @@ public class OfficialActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public void goToPhotoDetailActivity(View v) {
+        try {
+            if (official != null && !official.getPhotoUrl().isEmpty()) {
+                Log.d(TAG, "onClick: ");
+                Intent intent = new Intent(this, PhotoDetailActivity.class);
+                intent.putExtra(OFFICIAL_KEY, official);
+                intent.putExtra(LOCATION_KEY, tvLocation.getText());
+                startActivity(intent);
+            }
+            else {
+                return;
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "onClick: ", e);
+        }
+    }
+
     public void clickMap(View v) {
         String address = official.getOfficialAddress();
 //        address = "Shedd Aquarium, 1200 S. Lake Shore Drive, Chicago, IL, 60605";
